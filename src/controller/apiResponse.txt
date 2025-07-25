@@ -1,0 +1,192 @@
+{
+  "components": {
+    "schemas": {
+      "ApiResponse": {
+        "properties": {
+          "code": {
+            "description": "A code for this response. This code shall be referred in the documentation / error glossary.",
+            "example": "USER_001",
+            "type": "string"
+          },
+          "message": {
+            "description": "A user firendly message that the end user can be communicated. The end user is expected to understand this message.",
+            "type": "string"
+          },
+          "severity": {
+            "description": "The nature of the message with respect to the attention it deserves from the end user via UI/UX. eg INFO would mean a positive or expected response to the user. WARN would mean that something awkward happened and user needs to be told and acknowledgement taken.",
+            "enum": [
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR"
+            ],
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of this response.",
+            "enum": [
+              "OK",
+              "ERROR",
+              "SYSTEM_ERROR"
+            ],
+            "example": "OK, ERROR, SYSTEM_ERROR",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "type",
+          "severity",
+          "message"
+        ],
+        "type": "object"
+      },
+      "GenericId": {
+        "properties": {
+          "id": {
+            "example": "12321",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      },
+      "GenericIdRecord": {
+        "properties": {
+          "descr": {
+            "example": "Descriptive value of the record.",
+            "type": "string"
+          },
+          "id": {
+            "example": "12321",
+            "type": "string"
+          },
+          "name": {
+            "example": "Short Value.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object"
+      },
+      "GenericNamedValue": {
+        "properties": {
+          "descr": {
+            "example": "Descriptive value of the record.",
+            "type": "string"
+          },
+          "name": {
+            "example": "Short Value or key name",
+            "type": "string"
+          },
+          "value": {
+            "example": "The key value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      },
+      "LatLon": {
+        "properties": {
+          "latitude": {
+            "example": "50.6373",
+            "format": "double",
+            "type": "number"
+          },
+          "longitude": {
+            "example": "3.0750",
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "required": [
+          "latitude",
+          "longitude"
+        ],
+        "type": "object"
+      },
+      "LatLonArray": {
+        "items": {
+          "$ref": "#/components/schemas/LatLon"
+        },
+        "type": "array"
+      },
+      "PartyGroupData": {
+        "properties": {
+          "addresses": {
+            "items": {
+              "$ref": "https://schemas.redgrape.tech/openapi/ofbiz.json#/components/schemas/PostalAddress"
+            },
+            "type": "array"
+          },
+          "emails": {
+            "items": {
+              "$ref": "https://schemas.redgrape.tech/openapi/ofbiz.json#/components/schemas/ContactMech"
+            },
+            "type": "array"
+          },
+          "partygroup": {
+            "$ref": "https://schemas.redgrape.tech/openapi/ofbiz.json#/components/schemas/PartyGroup"
+          },
+          "phones": {
+            "items": {
+              "$ref": "https://schemas.redgrape.tech/openapi/ofbiz.json#/components/schemas/TelecomNumber"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PersonData": {
+        "properties": {
+          "addresses": {
+            "items": {
+              "$ref": "https://schemas.redgrape.tech/openapi/ofbiz.json#/components/schemas/PostalAddress"
+            },
+            "type": "array"
+          },
+          "emails": {
+            "items": {
+              "$ref": "https://schemas.redgrape.tech/openapi/ofbiz.json#/components/schemas/ContactMech"
+            },
+            "type": "array"
+          },
+          "person": {
+            "$ref": "https://schemas.redgrape.tech/openapi/ofbiz.json#/components/schemas/Person"
+          },
+          "phones": {
+            "items": {
+              "$ref": "https://schemas.redgrape.tech/openapi/ofbiz.json#/components/schemas/TelecomNumber"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "info@redgrape.tech",
+      "name": "Redgrape Dev Team",
+      "url": "https://www.redgrape.tech/"
+    },
+    "description": "This document describes common re-usable schema for other openapi\ndocuments developed by RedGrape.",
+    "license": {
+      "name": "RedGrape API License",
+      "url": "https://www.redgrape.tech/license/api.html"
+    },
+    "termsOfService": "https://www.redgrape.tech/tos_api.html",
+    "title": "Common Schema definations.",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.0"
+}
